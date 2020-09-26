@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guigu.dao.TuxingDao">
+
+	<!-- //查出销量-->
+	<select id="querytuxing" resultType="Tuxinginfo">
+			SELECT * FROM tuxingtable;
+	</select>
+
+	<!--查询所有用户-->
+	<select id="queryallperson" parameterType="person" resultType="person">
+		select * from person
+		<where>
+			<if test="name!=null"> and name like  concat('%',#{name},'%')</if>
+		</where>
+	</select>
+	<!--根据条件查询用户数量-->
+	<select id="queryallpersonbyCond" parameterType="person" resultType="int">
+		select count(*) from person
+		<where>
+			<if test="name!=null"> and name like  concat('%',#{name},'%')</if>
+		</where>
+	</select>
+
+
+
+
+</mapper>
